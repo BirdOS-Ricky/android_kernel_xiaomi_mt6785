@@ -27,7 +27,7 @@ jobs:
         export SUBARCH=arm64
         export PATH=$PWD/clang/bin:$PATH
 
-        make nomedispositivo_defconfig
+        make rosemary_defconfig
 
         make -j$(nproc) \
           CC=clang \
@@ -35,7 +35,7 @@ jobs:
           CROSS_COMPILE_ARM32=arm-linux-gnueabi-
 
     - name: Upload
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: kernel
         path: arch/arm64/boot/*
